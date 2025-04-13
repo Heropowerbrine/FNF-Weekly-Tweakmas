@@ -183,6 +183,11 @@ class MusicBeatState extends FlxUIState
 		return cast FlxG.state;
 	}
 
+	public static function switchState(nextState:FlxState)
+	{
+		FlxG.switchState(nextState); // just because im too lazy to goto every instance of switchState and change it to a FlxG call
+	}
+
 	public function stepHit():Void
 	{
 		if (curStep % 4 == 0) beatHit();
