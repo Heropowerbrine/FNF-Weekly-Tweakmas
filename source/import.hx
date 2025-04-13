@@ -17,10 +17,6 @@ import flixel.util.FlxDestroyUtil;
 import sys.io.*;
 import sys.*;
 #end
-#if DISCORD_ALLOWED
-import funkin.api.Discord;
-import funkin.api.Discord.DiscordClient;
-#end
 #if VIDEOS_ALLOWED
 import hxvlc.flixel.*;
 #end
