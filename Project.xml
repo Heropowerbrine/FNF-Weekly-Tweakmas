@@ -49,7 +49,7 @@
 	<define name="VIDEOS_ALLOWED" if="cpp" />
 	<define name="DISCORD_ALLOWED" if="desktop"/>
 
-	<assets path='assets/embeds' 		rename='assets'			embed="true" />
+	<assets path='assets/embeds' 		rename='assets'			embed="false" />
 	<assets path="assets/fonts" />
 	<assets path="assets/shared"        exclude="*.ogg" 		if="web"/>
 	<assets path="assets/shared"        exclude="*.mp3" 		unless="web"/>
