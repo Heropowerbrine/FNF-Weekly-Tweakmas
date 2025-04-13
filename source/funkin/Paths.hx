@@ -505,7 +505,7 @@ class Paths
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
 	{
-		return 'content/' + key;
+		return #if mobile Sys.getCwd() + #end 'content/' + key;
 	}
 
 	inline static public function modsFont(key:String)
@@ -575,7 +575,7 @@ class Paths
 			var fileToCheck:String = mods(mod + '/' + key);
 			if (FileSystem.exists(fileToCheck)) return fileToCheck;
 		}
-		return 'content/' + key;
+		return #if mobile Sys.getCwd() + #end 'content/' + key;
 	}
 
 	public static var globalMods:Array<String> = [];
