@@ -94,7 +94,14 @@
 	<haxeflag name="--macro" value="addMetadata('@:build(funkin.utils.MacroUtil.buildFlxSprite())', 'flixel.FlxSprite')" />
 	<haxeflag name="--macro" value="addMetadata('@:build(funkin.utils.MacroUtil.buildFlxBasic())', 'flixel.FlxBasic')" />
 	
-	<!--<haxeflag name="--macro" value="include('funkin')" />-->
+	<haxeflag name="--macro" value="include('funkin.backend')" />
+	<haxeflag name="--macro" value="include('funkin.data')" />
+	<haxeflag name="--macro" value="include('funkin.game')" />
+	<haxeflag name="--macro" value="include('funkin.huds')" />
+	<haxeflag name="--macro" value="include('funkin.modchart')" />
+	<haxeflag name="--macro" value="include('funkin.objects')" />
+	<haxeflag name="--macro" value="include('funkin.states')" />
+	<haxeflag name="--macro" value="include('funkin.utils')" />
 	<haxeflag name="--macro" value="include('flixel.addons.effects')" />
 	<haxeflag name="-dce no" />
 
