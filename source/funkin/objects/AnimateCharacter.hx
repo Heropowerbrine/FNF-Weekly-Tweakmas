@@ -1,3 +1,4 @@
+#if desktop
 package funkin.objects;
 
 import openfl.errors.Error;
@@ -31,6 +32,7 @@ class AnimateCharacter extends flxanimate.AnimateSprite implements Icharacter
 }
 
 // completely not done
+//screw this it made me stuck for an hour, I didn't know it wasn't complete yet - Hero
 interface Icharacter
 {
 	public function playAnim(name:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void;
@@ -38,3 +40,4 @@ interface Icharacter
 	public function loadJson():Void;
 	public function addOffset():Void;
 }
+#end
