@@ -17,6 +17,12 @@ class ClientPrefs
 	public static var loadingThreads:Int = Math.floor(Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS")) / 2);
 	public static var multicoreLoading:Bool = false;
 
+	public var screensaver:Bool = false;
+ 	public var wideScreen:Bool = false;
+ 	public var controlsAlpha:Float = 0.7;
+ 	public var hideHitboxHints:Bool = true;
+	public static var keyboardEnabled:Bool = false;
+
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var opponentStrums:Bool = true;
