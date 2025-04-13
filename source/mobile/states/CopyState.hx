@@ -23,7 +23,7 @@
 package mobile.states;
 
 #if mobile
-import states.TitleState;
+import funkin.states.TitleState;
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenFLAssets;
 import openfl.utils.ByteArray;
