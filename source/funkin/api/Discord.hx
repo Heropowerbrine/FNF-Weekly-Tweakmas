@@ -1,4 +1,3 @@
-#if desktop
 package funkin.api;
 
 import Sys.sleep;
@@ -106,4 +105,3 @@ class DiscordClient
 	}
 	#end
 }
-#end
