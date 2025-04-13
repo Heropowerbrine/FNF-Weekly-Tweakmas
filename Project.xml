@@ -30,7 +30,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true"/>
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -44,10 +44,10 @@
 	<classpath name="source" />
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
-	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="desktop || android" />
+	<define name="LUA_ALLOWED" if="desktop || android" />
 	<define name="VIDEOS_ALLOWED" if="cpp" />
-	<define name="DISCORD_ALLOWED" if="cpp"/>
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 
 	<assets path='assets/embeds' 		rename='assets'			embed="true" />
 	<assets path="assets/fonts" />
@@ -86,6 +86,7 @@
 	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
 	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
 	<haxelib name="hxvlc" if="VIDEOS_ALLOWED"/>
+	<haxelib name="hxCodec" if="VIDEOS_ALLOWED"/>
 
 
 	<!-- ______________________________ macros _____________________________ -->
@@ -114,6 +115,10 @@
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!--Avoid memory leaks with for loops in HScript-->
+	<haxedef name="loop_unroll_max_cost" value="25" />
+	<haxedef name="DISABLED_MACRO_SUPERLATIVE" if="mobile" />
 
 	<!-- <haxedef name="FLX_NO_PITCH" /> -->
 
