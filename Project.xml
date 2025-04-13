@@ -102,6 +102,7 @@
 	<haxeflag name="--macro" value="include('funkin.objects')" />
 	<haxeflag name="--macro" value="include('funkin.states')" />
 	<haxeflag name="--macro" value="include('funkin.utils')" />
+	<haxeflag name="--macro" value="include('funkin.api')" />
 	<haxeflag name="--macro" value="include('flixel.addons.effects')" />
 	<haxeflag name="-dce no" />
 
