@@ -5,6 +5,10 @@ import flixel.math.FlxPoint;
 import flixel.FlxG;
 import openfl.utils.Assets;
 
+#if cpp
+@:cppFileCode('#include <thread>')
+#end
+
 class CoolUtil
 {
 	inline public static function scale(x:Float, l1:Float, h1:Float, l2:Float, h2:Float):Float return ((x - l1) * (h2 - l2) / (h1 - l1) + l2);
@@ -152,4 +156,22 @@ class CoolUtil
 		FlxTransitionableState.skipNextTransIn = into;
 		FlxTransitionableState.skipNextTransOut = outof;
 	}
+	public static function showPopUp(message:String, title:String):Void
+	{
+		/*#if android
+		AndroidTools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#else*/
+		FlxG.stage.window.alert(message, title);
+		//#end
+	}
+
+	#if cpp
+    @:functionCode('
+        return std::thread::hardware_concurrency();
+    ')
+	#end
+    public static function getCPUThreadsCount():Int
+    {
+        return 1;
+    }
 }
