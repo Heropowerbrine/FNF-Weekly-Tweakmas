@@ -117,7 +117,7 @@ class Main extends Sprite
 			FNFGame
 			#else
 			FlxGame
-			#end(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) CopyState.checkExistingFiles() ? initialState : CopyState #else initialState #end, framerate, framerate, skipSplash, startFullscreen);
+			#end(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) CopyState.checkExistingFiles() ? initialState : CopyState #else Splash #end, framerate, framerate, skipSplash, startFullscreen);
 
 		// FlxG.game._customSoundTray wants just the class, it calls new from
 		// create() in there, which gets called when it's added to stage
