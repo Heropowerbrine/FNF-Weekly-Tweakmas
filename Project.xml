@@ -91,12 +91,12 @@
 
 	<!-- ______________________________ macros _____________________________ -->
 
-	<haxeflag name="--macro" value="addMetadata('@:build(funkin.utils.MacroUtil.buildFlxSprite())', 'flixel.FlxSprite')" />
+	<!--<haxeflag name="--macro" value="addMetadata('@:build(funkin.utils.MacroUtil.buildFlxSprite())', 'flixel.FlxSprite')" />
 	<haxeflag name="--macro" value="addMetadata('@:build(funkin.utils.MacroUtil.buildFlxBasic())', 'flixel.FlxBasic')" />
 	
 	<haxeflag name="--macro" value="include('funkin')" />
 	<haxeflag name="--macro" value="include('flixel.addons.effects')" />
-	<!--<haxeflag name="-dce no" />-->
+	<haxeflag name="-dce no" />-->
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
