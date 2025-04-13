@@ -64,12 +64,6 @@
             "url": "https://github.com/MobilePorting/linc_luajit"
         },
         {
-            "name": "discord_rpc",
-            "type": "git",
-            "dir": null,
-            "url": "https://github.com/Aidan63/linc_discord-rpc"
-        },
-        {
             "name": "flxanimate",
             "type": "git",
             "dir": null,
