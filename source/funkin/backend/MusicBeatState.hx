@@ -5,6 +5,7 @@ import funkin.backend.BaseTransitionState;
 import funkin.states.transitions.SwipeTransition;
 import flixel.addons.ui.FlxUIState;
 import flixel.FlxG;
+import flixel.FlxState;
 import flixel.addons.transition.FlxTransitionableState;
 import funkin.data.*;
 import funkin.data.scripts.*;
