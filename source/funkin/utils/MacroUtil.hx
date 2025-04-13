@@ -17,7 +17,7 @@ class MacroUtil
 	{
 		#if !display
 
-		#if (hxvlc != "1.5.5")
+		/*#if (hxvlc != "1.5.5")
 		Context.fatalError('use Hxvlc version to 1.5.5 and do a clean compile.', (macro null).pos);
 		#end
 
@@ -34,7 +34,7 @@ class MacroUtil
 
 		Context.warning('warning: ensure your hxvlc global version matches your local hmm install.\nIf errors related to .h files continue run "lime test windows -clean" for a clean rebuild.\nLastly, please use lime version 8.1.3 for stability\nCheck the projFiles folder for more info.',
 			Context.currentPos());
-
+                */
 		#end
 
 		return macro $v{0}
