@@ -1,7 +1,7 @@
 package funkin.objects.shader;
 
 import flixel.FlxG;
-import flixel.system.FlxAssets.FlxShader;
+import funkin.objects.shader.flixel.shader.FlxShader;
 
 /**
  * By @Ne_Eo_Twitch, modded a bit by lunar
