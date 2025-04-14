@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=RFRmlPC8Ujo
 package funkin.objects.shader;
 
-import flixel.system.FlxAssets.FlxShader;
+import funkin.objects.shader.flixel.shader.FlxShader;
 
 class GreenScreenShader extends FlxShader // https://www.shadertoy.com/view/4dX3WN
 {
