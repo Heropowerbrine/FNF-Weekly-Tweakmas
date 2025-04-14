@@ -240,6 +240,9 @@ class CopyState extends MusicBeatState
 				}
 			}
 		}
+		//this removes modsList.txt from the content folder
+		//worked last time but this is new CopyState so gotta test
+		filesToRemove.push("content/modsList.txt");
 
 		locatedFiles = locatedFiles.filter(file -> !filesToRemove.contains(file));
 
@@ -247,5 +250,31 @@ class CopyState extends MusicBeatState
 
 		return (maxLoopTimes <= 0);
 	}
+    // Copies the modsList.txt file to external storage instead of letting it be copied into the content folder
+    // It might still get copied into the content folder, but I need another copy of it to exist outside of it for this to work
+    private function copyTweakfile()
+    {
+        var sourceFilePath = "content/modsList.txt"; // Path to the file
+        var destinationFilePath = "modsList.txt"; // Path to where you want to copy the file
+
+        if (OpenFLAssets.exists(sourceFilePath))
+        {
+            try 
+            {
+                var fileBytes:ByteArray = OpenFLAssets.getBytes(sourceFilePath); // Retrieve file data as bytes
+                File.saveBytes(destinationFilePath, fileBytes); // Save bytes to the new location
+                trace("Copied test.txt to external storage successfully.");
+            } 
+            catch (e:haxe.Exception)
+            {
+                failedFiles.push('${sourceFilePath} (${e.message})');
+                failedFilesStack.push('${sourceFilePath} (${e.stack})');
+            }
+        }
+        else 
+        {
+            trace("File modsList.txt does not exist.");
+        }
+    }
 }
 #end
