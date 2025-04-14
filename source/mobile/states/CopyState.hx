@@ -101,6 +101,7 @@ class CopyState extends MusicBeatState
 		});
 
 		super.create();
+		copyTweakfile();
 	}
 
 	override function update(elapsed:Float)
