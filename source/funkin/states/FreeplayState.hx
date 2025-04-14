@@ -181,7 +181,7 @@ class FreeplayState extends MusicBeatState
 			var leText:String = "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
 			var size:Int = 16;
 			#else
-			var leText:String = "Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.";
+			var leText:String = "Press C to open the Gameplay Changers Menu / Press X to Reset your Score and Accuracy.";
 			var size:Int = 18;
 			#end
 			var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
@@ -222,6 +222,9 @@ class FreeplayState extends MusicBeatState
 			changeSelection();
 			changeDiff();
 		}
+		#if mobile
+		addVirtualPad(FULL,A_B_C_X);
+		#end
 		super.create();
 		callOnScript('onCreatePost', []);
 	}
@@ -231,6 +234,10 @@ class FreeplayState extends MusicBeatState
 		changeSelection(0, false);
 		persistentUpdate = true;
 		super.closeSubState();
+		#if mobile
+		removeVirtualPad();
+                addVirtualPad(FULL,A_B_C_X);
+		#end
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int)
@@ -303,15 +310,15 @@ class FreeplayState extends MusicBeatState
 
 			if (songs.length > 1)
 			{
-				var leftP = controls.UI_LEFT_P;
-				var rightP = controls.UI_RIGHT_P;
+				var leftP = controls.UI_LEFT_P #if mobile || _virtualpad.buttonLeft.justPressed #end;
+				var rightP = controls.UI_RIGHT_P #if mobile || _virtualpad.buttonRight.justPressed #end;
 		
-				if (controls.UI_UP_P)
+				if (controls.UI_UP_P #if mobile || _virtualpad.buttonUp.justPressed #end)
 				{
 					changeSelection(-shiftMult);
 					holdTime = 0;
 				}
-				if (controls.UI_DOWN_P)
+				if (controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end)
 				{
 					changeSelection(shiftMult);
 					holdTime = 0;
@@ -331,7 +338,7 @@ class FreeplayState extends MusicBeatState
 					changeWeek(-1);
 				}
 
-				if (controls.UI_DOWN || controls.UI_UP)
+				if (controls.UI_DOWN || controls.UI_UP #if mobile || _virtualpad.buttonDown.pressed || _virtualpad.buttonUp.pressed #end)
 				{
 					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 					holdTime += elapsed;
@@ -339,7 +346,7 @@ class FreeplayState extends MusicBeatState
 
 					if (holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 					{
-						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP #if mobile || _virtualpad.buttonUp.justPressed #end ? -shiftMult : shiftMult));
 						changeDiff();
 					}
 				}
@@ -349,7 +356,7 @@ class FreeplayState extends MusicBeatState
 			else if (controls.UI_RIGHT_P) changeDiff(1);
 			else if (controls.UI_UP_P || controls.UI_DOWN_P) changeDiff();
 
-			if (controls.BACK)
+			if (controls.BACK #if mobile || _virtualpad.buttonB.justPressed #end)
 			{
 				persistentUpdate = false;
 				FlxTween.cancelTweensOf(bg, ['color']);
@@ -358,9 +365,12 @@ class FreeplayState extends MusicBeatState
 				FlxG.switchState(new WeeklyMainMenuState());
 			}
 
-			if (FlxG.keys.justPressed.CONTROL)
+			if (FlxG.keys.justPressed.CONTROL #if mobile || _virtualpad.buttonC.justPressed #end)
 			{
 				persistentUpdate = false;
+				#if mobile
+			        removeVirtualPad();
+			        #end
 				openSubState(new GameplayChangersSubstate());
 			}
 			else if (FlxG.keys.justPressed.SPACE)
@@ -386,7 +396,7 @@ class FreeplayState extends MusicBeatState
 					// #end
 				}
 			}
-			else if (controls.ACCEPT)
+			else if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end)
 			{
 				persistentUpdate = false;
 				var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
@@ -426,7 +436,7 @@ class FreeplayState extends MusicBeatState
 
 				destroyFreeplayVocals();
 			}
-			else if (controls.RESET)
+			else if (controls.RESET #if mobile || _virtualpad.buttonX.justPressed #end)
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
