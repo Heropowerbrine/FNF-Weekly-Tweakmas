@@ -1,4 +1,4 @@
-package gameObjects.shader.flixel.system;
+package funkin.objects.shader.flixel.shader;
 
 import flixel.system.FlxAssets.FlxShader as OriginalFlxShader;
 
