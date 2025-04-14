@@ -300,6 +300,10 @@ class CreditsState extends MusicBeatState
 		descBox.sprTracker = descText;
 		add(descText);
 
+		#if mobile
+	        addVirtualPad(UP_DOWN,A_B);
+		#end
+
 		bg.color = FlxColor.fromString(creditsStuff[curSelected][4]);
 		intendedColor = bg.color;
 		changeSelection();
@@ -323,8 +327,8 @@ class CreditsState extends MusicBeatState
 				var shiftMult:Int = 1;
 				if (FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
-				var upP = controls.UI_UP_P;
-				var downP = controls.UI_DOWN_P;
+				var upP = controls.UI_UP_P #if mobile || _virtualpad.buttonDown.justPressed #end;
+				var downP = controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end;
 
 				if (upP)
 				{
@@ -337,7 +341,7 @@ class CreditsState extends MusicBeatState
 					holdTime = 0;
 				}
 
-				if (controls.UI_DOWN || controls.UI_UP)
+				if (controls.UI_DOWN || controls.UI_UP #if mobile || _virtualpad.buttonDown.pressed || _virtualpad.buttonUp.pressed #end)
 				{
 					var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 					holdTime += elapsed;
@@ -345,16 +349,16 @@ class CreditsState extends MusicBeatState
 
 					if (holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 					{
-						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
+						changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP #if mobile || _virtualpad.buttonUp.pressed #end ? -shiftMult : shiftMult));
 					}
 				}
 			}
 
-			if (controls.ACCEPT && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
+			if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end && (creditsStuff[curSelected][3] == null || creditsStuff[curSelected][3].length > 4))
 			{
 				CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 			}
-			if (controls.BACK)
+			if (controls.BACK #if mobile || _virtualpad.buttonB.justPressed #end)
 			{
 				colorTween?.cancel();
 
