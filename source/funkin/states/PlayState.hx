@@ -757,6 +757,9 @@ class PlayState extends MusicBeatState
 
 		callOnLuas('onCreate', []);
 
+		addHitbox(3);
+  		_hitbox.visible = false;
+
 		startingSong = true;
 
 		// SONG SPECIFIC SCRIPTS
@@ -1242,6 +1245,10 @@ class PlayState extends MusicBeatState
 
 	public function startCountdown():Void
 	{
+		#if mobile
+  		_hitbox.visible = true;
+  		#end
+		
 		if (startedCountdown)
 		{
 			callOnScripts('onStartCountdown', []);
@@ -2449,7 +2456,7 @@ class PlayState extends MusicBeatState
 		setOnHScripts('curStep', curStep);
 		setOnHScripts('curBeat', curBeat);
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			final ret:Dynamic = callOnScripts('onPause', []);
 			if (ret != Globals.Function_Stop)
@@ -3500,6 +3507,10 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+
+		#if mobile
+  		_hitbox.visible = false;
+  		#end
 
 		deathCounter = 0;
 		seenCutscene = false;
