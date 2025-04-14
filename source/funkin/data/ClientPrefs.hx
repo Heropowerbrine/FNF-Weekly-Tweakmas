@@ -20,7 +20,7 @@ class ClientPrefs
 	public static var screensaver:Bool = false;
  	public static var wideScreen:Bool = false;
  	public static var controlsAlpha:Float = 0.7;
- 	public static var hideHitboxHints:Bool = true;
+ 	public static var hideHitboxHints:Bool = false;
 	public static var keyboardEnabled:Bool = false;
 
 	public static var downScroll:Bool = false;
