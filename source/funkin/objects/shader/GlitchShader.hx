@@ -1,6 +1,6 @@
 package funkin.objects.shader;
 
-import flixel.system.FlxAssets.FlxShader;
+import funkin.objects.shader.flixel.shader.FlxShader;
 
 // https://www.shadertoy.com/view/MscGzl
 class GlitchShaderA extends FlxShader
