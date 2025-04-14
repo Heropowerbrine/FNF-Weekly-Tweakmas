@@ -1,14 +1,13 @@
-#pragma header
-#define PI 3.1415926538
-
-uniform float xrot;
-uniform float yrot;
-uniform float zrot;
-uniform float xpos;
-uniform float ypos;
-uniform float zpos;
-
-	float alph = 0;
+	#pragma header
+	#define PI 3.1415926538
+	uniform float xrot;
+	uniform float yrot;
+	uniform float zrot;
+	uniform float dept;
+	uniform float xpos;
+    uniform float ypos;
+    uniform float zpos;
+	float alph = 0.0;
 float plane( in vec3 norm, in vec3 po, in vec3 ro, in vec3 rd ) {
     float de = dot(norm, rd);
     de = sign(de)*max( abs(de), 0.001);
@@ -16,7 +15,7 @@ float plane( in vec3 norm, in vec3 po, in vec3 ro, in vec3 rd ) {
 }
 
 vec2 raytraceTexturedQuad(in vec3 rayOrigin, in vec3 rayDirection, in vec3 quadCenter, in vec3 quadRotation, in vec2 quadDimensions) {
-    //Rotations ------------------
+    //Rotations
     float a = sin(quadRotation.x); float b = cos(quadRotation.x); 
     float c = sin(quadRotation.y); float d = cos(quadRotation.y); 
     float e = sin(quadRotation.z); float f = cos(quadRotation.z); 
@@ -26,7 +25,6 @@ vec2 raytraceTexturedQuad(in vec3 rayOrigin, in vec3 rayDirection, in vec3 quadC
 			mat3(	  d*f,      d*e,  -c,
                  ac*f-b*e, ac*e+b*f, a*d,
                  bc*f+a*e, bc*e-a*f, b*d );
-    //--------------------------------------
     
     vec3 right = RotationMatrix * vec3(quadDimensions.x, 0.0, 0.0);
     vec3 up = RotationMatrix * vec3(0, quadDimensions.y, 0);
@@ -42,7 +40,7 @@ vec2 raytraceTexturedQuad(in vec3 rayOrigin, in vec3 rayDirection, in vec3 quadC
 }
 
 void main() {
-	vec4 texColor = texture2D(bitmap, openfl_TextureCoordv);
+	vec4 texColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
     //Screen UV goes from 0 - 1 along each axis
     vec2 screenUV = openfl_TextureCoordv;
     vec2 p = (2.0 * screenUV) - 1.0;
@@ -63,12 +61,12 @@ void main() {
     //If we hit the rectangle, sample the texture
     if (abs(uv.x - 0.5) < 0.5 && abs(uv.y - 0.5) < 0.5) {
 		
-		//vec4 tex = flixel_texture2D(bitmap, uv);
-		//float bitch = 1.0;
-		//if (tex.z == 0.0){
-		//	bitch = 0.0;
-		//}
+		vec3 tex = flixel_texture2D(bitmap, uv).xyz;
+		float bitch = 1.0;
+        if (tex.r == 0.0 && tex.g == 0.0 && tex.b == 0.0){
+            bitch = 0.0;
+        }
 		
-	  gl_FragColor = flixel_texture2D(bitmap, uv);
+	  gl_FragColor = vec4(flixel_texture2D(bitmap, uv).xyz, bitch);
     }
 }
