@@ -45,6 +45,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		instance = this;
 		PlayState.instance.callOnScripts('onGameOverStart', []);
 
+		#if mobile
+		addVirtualPad(NONE,A_B);
+		addVirtualPadCamera();
+		#end
+
 		super.create();
 	}
 
@@ -94,12 +99,12 @@ class GameOverSubstate extends MusicBeatSubstate
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end)
 		{
 			endBullshit();
 		}
 
-		if (controls.BACK)
+		if (controls.BACK #if mobile || _virtualpad.buttonB.justPressed #end)
 		{
 			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
