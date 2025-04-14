@@ -2,6 +2,7 @@ package;
 
 import funkin.objects.video.FunkinVideo;
 import flixel.FlxState;
+import hxcodec.flixel.FlxVideo as VideoPlayer;
 
 using StringTools;
 
@@ -16,6 +17,8 @@ class Splash extends FlxState
 	var spriteEvents:FlxTimer;
 	var logo:FlxSprite;
 
+	var videoPlayer:VideoPlayer;
+	
 	override function create()
 	{
 		_cachedAutoPause = FlxG.autoPause;
@@ -60,14 +63,25 @@ class Splash extends FlxState
 
 	override function update(elapsed:Float)
 	{
+		var justTouched:Bool = false;
+
+		#if mobile
+                for (touch in FlxG.touches.list)
+	                if (touch.justPressed)
+		                justTouched = true;
+		#end
+		
 		if (logo != null)
 		{
 			logo.updateHitbox();
 			logo.screenCenter();
 
-			if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER)
+			if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER || justTouched)
 			{
+				if (videoPlayer != null) {
+				videoPlayer.stop();
 				onComplete();
+				}
 
 				if (spriteEvents != null)
 				{
@@ -88,18 +102,21 @@ class Splash extends FlxState
 			spriteEvents.destroy();
 		}
 		new FlxTimer().start(1, function(tmr:FlxTimer){
-			video = new FunkinVideo();
-			video.onEndReached.add(onComplete,true);
-			video.load(Paths.video('intro'));
-			video.play();
+			videoPlayer = new VideoPlayer();
+			videoPlayer.play(Paths.video('intro'));
+			videoPlayer.onEndReached.add(function()
+			{
+				videoPlayer.dispose();
+				onComplete();
+				return;
+			}, true);
 		});
 	}
 
 	function onComplete():Void
 	{
-		if (video != null)
-		{
-			video.dispose();
+		if (videoPlayer != null) {
+		videoPlayer.dispose();
 		}
 		FlxG.autoPause = _cachedAutoPause;
 		FlxG.switchState(() -> Type.createInstance(nextState, []));
