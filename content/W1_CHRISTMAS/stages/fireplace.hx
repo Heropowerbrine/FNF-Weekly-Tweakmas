@@ -28,10 +28,17 @@ function onCreatePost()
     game.playHUD.timeBar.screenCenter(FlxAxes.X);
     game.playHUD.timeTxt.screenCenter(FlxAxes.X);
     game.playHUD.comboOffsets = [-200, -50, -100, -50];
-    for (hbox in game._hitbox.hitbox.members) {
-	    hbox.scale.y = 960 / hbox.frameHeight;
-	    hbox.updateHitbox();
-    }
+    //for (hbox in game._hitbox.hitbox.members) {
+	    //hbox.scale.y = 960 / hbox.frameHeight;
+	    //hbox.updateHitbox();
+    //}
+	for (hb in game._hitbox.hitbox.members) {
+		hb.scale.y = 960 / hb.frameHeight;
+		hb.scale.x = (960 / 4) / hb.frameWidth;
+		hb.x = hb.x * hb.scale.x;
+		hb.updateHitbox();
+	}
+	game._hitbox.hitbox.screenCenter(FlxAxes.X);
     game.setGameOverVideo('grinch');
 }
 
