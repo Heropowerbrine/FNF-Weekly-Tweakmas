@@ -35,7 +35,7 @@ class Main extends Sprite
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 
-	static var initialState:Class<FlxState> = Init; // The FlxState the game starts with.
+	static var initialState:Class<FlxState> = Splash; // The FlxState the game starts with.
 
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 60; // How many frames per second the game should run at.
@@ -117,7 +117,7 @@ class Main extends Sprite
 			FNFGame
 			#else
 			FlxGame
-			#end(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) CopyState.checkExistingFiles() ? initialState : CopyState #else Splash #end, framerate, framerate, skipSplash, startFullscreen);
+			#end(gameWidth, gameHeight, #if (mobile && MODS_ALLOWED) CopyState.checkExistingFiles() ? initialState : CopyState #else initialState #end, framerate, framerate, skipSplash, startFullscreen);
 
 		// FlxG.game._customSoundTray wants just the class, it calls new from
 		// create() in there, which gets called when it's added to stage
