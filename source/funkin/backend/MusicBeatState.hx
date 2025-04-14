@@ -83,6 +83,38 @@ class MusicBeatState extends FlxUIState
 
 	inline function get_controls():Controls return PlayerSettings.player1.controls;
 
+	#if mobile
+	var _virtualpad:FlxVirtualPad;
+	var _hitbox:FlxHitbox;
+
+	public function addHitbox(?keyCount:Int = 3) {
+		_hitbox = new FlxHitbox(keyCount);
+
+		var camMobile = new FlxCamera();
+	    camMobile.bgColor.alpha = 0;
+		FlxG.cameras.add(camMobile, false);
+
+		_hitbox.cameras = [camMobile];
+ 		add(_hitbox);
+	}
+
+	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+        _virtualpad = new FlxVirtualPad(DPad, Action);
+		add(_virtualpad);
+	}
+
+    public function addVirtualPadCamera() {
+		var virtualpadcam = new FlxCamera();
+		virtualpadcam.bgColor.alpha = 0;
+		FlxG.cameras.add(virtualpadcam, false);
+		_virtualpad.cameras = [virtualpadcam];
+    }
+
+	public function removeVirtualPad() {
+		remove(_virtualpad);
+	}
+	#end
+
 	override function create()
 	{
 		super.create();
