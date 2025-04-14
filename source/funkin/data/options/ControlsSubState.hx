@@ -122,6 +122,9 @@ class ControlsSubState extends MusicBeatSubstate
 			}
 		}
 		changeSelection();
+		#if mobile
+		addVirtualPad(FULL,A_B);
+		#end
 	}
 
 	var leaving:Bool = false;
@@ -131,27 +134,27 @@ class ControlsSubState extends MusicBeatSubstate
 	{
 		if (!rebindingKey)
 		{
-			if (controls.UI_UP_P)
+			if (controls.UI_UP_P #if mobile || _virtualpad.buttonUp.justPressed #end)
 			{
 				changeSelection(-1);
 			}
-			if (controls.UI_DOWN_P)
+			if (controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end)
 			{
 				changeSelection(1);
 			}
-			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+			if (controls.UI_LEFT_P || controls.UI_RIGHT_P #if mobile || _virtualpad.buttonLeft.justPressed || _virtualpad.buttonRight.justPressed #end)
 			{
 				changeAlt();
 			}
 
-			if (controls.BACK)
+			if (controls.BACK #if mobile || _virtualpad.buttonB.justPressed #end)
 			{
 				ClientPrefs.reloadControls();
 				close();
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
 
-			if (controls.ACCEPT && nextAccept <= 0)
+			if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end && nextAccept <= 0)
 			{
 				if (optionShit[curSelected][0] == defaultKey)
 				{
