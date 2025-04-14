@@ -28,6 +28,10 @@ function onCreatePost()
     game.playHUD.timeBar.screenCenter(FlxAxes.X);
     game.playHUD.timeTxt.screenCenter(FlxAxes.X);
     game.playHUD.comboOffsets = [-200, -50, -100, -50];
+    for (hbox in game._hitbox.hitbox.members) {
+	    hbox.scale.y = 960 / hbox.frameHeight;
+	    hbox.updateHitbox();
+    }
     game.setGameOverVideo('grinch');
 }
 
