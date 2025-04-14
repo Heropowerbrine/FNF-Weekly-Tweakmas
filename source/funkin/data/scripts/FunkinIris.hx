@@ -4,6 +4,7 @@ import funkin.data.scripts.FunkinScript;
 import funkin.utils.MacroUtil;
 import crowplexus.iris.IrisConfig;
 import crowplexus.iris.Iris;
+import flixel.addons.display.FlxRuntimeShader;
 import funkin.objects.*;
 
 class InterpEX extends crowplexus.hscript.Interp 
@@ -248,7 +249,7 @@ class FunkinIris extends FunkinScript
 		set("FlxEase", flixel.tweens.FlxEase);
 		set("FlxSound", flixel.sound.FlxSound);
 		set('FlxColor', funkin.data.scripts.ScriptClasses.HScriptColor);
-		set("FlxRuntimeShader", flixel.addons.display.FlxRuntimeShader);
+		set("FlxRuntimeShader", FlxRuntimeShader);
 		set("FlxFlicker", flixel.effects.FlxFlicker);
 		set('FlxSpriteUtil', flixel.util.FlxSpriteUtil);
 		//set('AnimateSprite', flxanimate.AnimateSprite);
