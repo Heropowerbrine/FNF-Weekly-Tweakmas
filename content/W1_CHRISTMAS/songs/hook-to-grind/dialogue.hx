@@ -65,7 +65,11 @@ function presongCutscene()
 
 function onUpdatePost()
 {
-    if (FlxG.keys.justPressed.ENTER && !isDialogueFinished) 
+    var justTouched:Bool = false;
+ 		for (touch in FlxG.touches.list)
+ 			if (touch.justPressed)
+ 				justTouched = true;
+    if (FlxG.keys.justPressed.ENTER || justTouched && !isDialogueFinished) 
     {
         FlxG.sound.play(Paths.sound('personasfx'));
         nextDialogue();
