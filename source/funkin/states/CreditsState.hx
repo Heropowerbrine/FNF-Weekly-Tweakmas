@@ -327,7 +327,7 @@ class CreditsState extends MusicBeatState
 				var shiftMult:Int = 1;
 				if (FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
-				var upP = controls.UI_UP_P #if mobile || _virtualpad.buttonDown.justPressed #end;
+				var upP = controls.UI_UP_P #if mobile || _virtualpad.buttonUp.justPressed #end;
 				var downP = controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end;
 
 				if (upP)
