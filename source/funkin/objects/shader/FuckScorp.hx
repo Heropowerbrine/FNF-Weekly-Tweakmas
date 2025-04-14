@@ -1,6 +1,6 @@
 package funkin.objects.shader;
 
-import flixel.system.FlxAssets.FlxShader;
+import funkin.objects.shader.flixel.shader.FlxShader;
 
 using StringTools;
 
