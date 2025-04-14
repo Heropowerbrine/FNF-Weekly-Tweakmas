@@ -1,5 +1,5 @@
 TWEAKMAS 2 - SQUAD UP
-KatAnims::KatAnims::Composer of "Frostburn" with scrumbo_::https://x.com/KatAnims::0xFFFFAF64
+KatAnims::Kat::Composer of "Frostburn" with scrumbo_::https://x.com/KatAnims::0xFFFFAF64
 scrumbo_::Scrumbo::Composer of "Frostburn" with KatAnims::https://x.com/scrumbo_::0xFFFFAF64
 Flaguieug::Flaguieug::"Frostburn" Sprites, Background & Programming::https://x.com/Flaguieug::0xFFFFAF64
 alphalul1::Alphalul1::"Frostburn" UI, Raven Team Leader Sprites::https://x.com/alphautism::0xFFFFAF64
@@ -21,5 +21,5 @@ theWAHbox::Wahbox::Composer of "Dead End" with Cloverderus & Kreagato::https://x
 Kreagato::Kreagato::Composer of "Dead End" with Cloverderus & theWAHbox::https://x.com/Kreagato::0xFFFFAF64
 loggo::Loggo::Employee Sprites, Programmer of "Dead End" with Srife5 & OrbyyOrbinaut::https://x.com/loggoman512::0xFFFFAF64
 Srife5::Srife5::Programmer of "Dead End" with loggo & OrbyyOrbinaut::https://x.com/strife55::0xFFFFAF64
-maddiesmiles::MaddieSmiles::Composer of "Dying Wish", Voice of The Bread Monster, Composer of "Park" with Crossknife::https://x.com/maddiesmiles_::0xFFFFAF64
+maddiesmiles::Maddiesmiles::Composer of "Dying Wish", Voice of The Bread Monster, Composer of "Park" with Crossknife::https://x.com/maddiesmiles_::0xFFFFAF64
 succeroni::succeroni::All Visuals of "Dying Wish"::https://x.com/succeroni11::0xFFFFAF64
