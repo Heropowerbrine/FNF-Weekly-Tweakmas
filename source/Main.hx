@@ -110,6 +110,7 @@ class Main extends Sprite
 			zoom = 1.0;
 		#end
 
+		Splash.nextState = Init;
 		ClientPrefs.loadDefaultKeys();
 
 		var game = new
