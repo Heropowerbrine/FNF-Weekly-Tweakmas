@@ -132,6 +132,10 @@ function onCreatePost(){
     game.playHUD.scoreTxt.screenCenter(FlxAxes.X);
     game.playHUD.timeBar.screenCenter(FlxAxes.X);
     game.playHUD.timeTxt.screenCenter(FlxAxes.X);
+    for (hbox in game._hitbox.hitbox.members) {
+	    hbox.scale.y = 960 / hbox.frameHeight;
+	    hbox.updateHitbox();
+    }
 
     game.dad.danceEveryNumBeats = 1;
     game.boyfriend.danceEveryNumBeats = 1;
