@@ -39,11 +39,24 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 
-		#if !mobile
 		var option:Option = new Option('FPS Counter', 'If unchecked, hides FPS Counter.', 'showFPS', 'bool', true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
-		#end
+
+		var option:Option = new Option('Allow Phone Screensaver',
+		    'If checked, the phone will sleep after going inactive for few seconds.',
+		    'screensaver', 
+		    'bool',
+		    false);
+		option.onChange = () -> lime.system.System.allowScreenTimeout = curOption.getValue(); 
+		addOption(option);
+
+		var option:Option = new Option('Hide Hitbox Hints',
+		    'If checked, makes the hitbox completely invisible. (Why would you use this)',
+		    'hideHitboxHints',
+		    'bool',
+		    false);
+		addOption(option);
 
 		super();
 	}
