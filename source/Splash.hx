@@ -9,6 +9,7 @@ using StringTools;
 @:access(Main)
 class Splash extends FlxState
 {
+	public static var nextState:Class<FlxState>;
 	var video:FunkinVideo;
 	var _cachedAutoPause:Bool;
 
@@ -101,6 +102,6 @@ class Splash extends FlxState
 			video.dispose();
 		}
 		FlxG.autoPause = _cachedAutoPause;
-		FlxG.switchState(() -> Type.createInstance(Main.initialState, []));
+		FlxG.switchState(() -> Type.createInstance(nextState, []));
 	}
 }
