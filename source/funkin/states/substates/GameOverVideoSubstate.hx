@@ -44,13 +44,19 @@ class GameOverVideoSubstate extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
+		var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+ 			if (touch.justPressed)
+ 				justTouched = true;
+		
 		PlayState.instance.callOnScripts('onUpdate', [elapsed]);
 		PlayState.instance.callOnHScripts('update', [elapsed]);
 		super.update(elapsed);
 
 		PlayState.instance.callOnScripts('onUpdatePost', [elapsed]);
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT || justTouched)
 		{
 			PlayState.instance.callOnScripts('onGameOverConfirm', [true]);
 			FlxG.resetState();
