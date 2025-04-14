@@ -1,6 +1,6 @@
 package funkin.objects.shader;
 
-import flixel.system.FlxAssets.FlxShader;
+import funkin.objects.shader.flixel.shader.FlxShader;
 class DistortGlitchShader extends FlxShader // https://www.shadertoy.com/view/ldjGzV and https://www.shadertoy.com/view/Ms23DR and https://www.shadertoy.com/view/MsXGD4 and https://www.shadertoy.com/view/Xtccz4
 {
 	@:glFragmentSource('
