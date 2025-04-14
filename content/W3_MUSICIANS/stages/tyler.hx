@@ -114,6 +114,10 @@ function onCreatePost(){
     game.playHUD.scoreTxt.screenCenter(FlxAxes.X);
     game.playHUD.timeBar.screenCenter(FlxAxes.X);
     game.playHUD.timeTxt.screenCenter(FlxAxes.X);
+    for (hbox in game._hitbox.hitbox.members) {
+	    hbox.scale.y = 960 / hbox.frameHeight;
+	    hbox.updateHitbox();
+    }
 
     game.isCameraOnForcedPos = true;
     game.snapCamFollowToPos(1280 / 2, 960 / 2);
