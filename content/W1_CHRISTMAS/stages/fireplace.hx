@@ -33,7 +33,7 @@ function onCreatePost()
 	    //hbox.updateHitbox();
     //}
 	for (hb in game._hitbox.hitbox.members) {
-		hb.scale.y = 960 / hb.frameHeight;
+		//hb.scale.y = 960 / hb.frameHeight;
 		hb.scale.x = (960 / 4) / hb.frameWidth;
 		hb.x = hb.x * hb.scale.x;
 		hb.updateHitbox();
