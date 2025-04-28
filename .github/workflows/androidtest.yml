@@ -33,6 +33,13 @@ jobs:
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true 
 
+      - name: Dump debug.hxml
+        if: always()
+        run: |
+          echo "=== debug.hxml contents ==="
+          sed -n '1,50p' export/debug/android/haxe/debug.hxml
+          echo "--- (end of snippet) ---"
+
       - name: Compile
         run: |
           haxelib run lime build android
